@@ -1,1026 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nupur - Professional Services</title>
-    <meta name="description" content="Professional services business website">
-    <style>
-        /* CSS Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1d4ed8;
-            --accent-color: #3b82f6;
-            --light-color: #f8fafc;
-            --dark-color: #1e293b;
-            --text-color: #334155;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-            --max-width: 1200px;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-color);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--primary-color);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        section {
-            padding: 4rem 0;
-        }
-
-        .container {
-            width: 90%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        /* Header Styles */
-        header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            font-weight: 500;
-            color: var(--dark-color);
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        nav a:hover::after,
-        nav a.active::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            text-align: center;
-            padding: 6rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-        }
-
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        /* About Section */
-        .about {
-            background: white;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark-color);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--text-color);
-            font-size: 1.125rem;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--dark-color);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gray-100);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-        }
-
-        .feature-text h4 {
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-        }
-
-        /* Services Section */
-        .services {
-            background: var(--light-color);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .service-image {
-            height: 200px;
-            background: var(--gray-100);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-color);
-        }
-
-        .service-content {
-            padding: 2rem;
-        }
-
-        .service-content h3 {
-            margin-bottom: 1rem;
-            color: var(--dark-color);
-        }
-
-        .service-content p {
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-        }
-
-        .service-price {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        /* Stats Section */
-        .stats {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat {
-            padding: 2rem 0;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.125rem;
-            opacity: 0.9;
-        }
-
-        /* CTA Section */
-        .cta {
-            text-align: center;
-            padding: 5rem 0;
-            background: white;
-        }
-
-        .cta h2 {
-            font-size: 2.25rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark-color);
-        }
-
-        .cta p {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            color: var(--text-color);
-            font-size: 1.125rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background: var(--light-color);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            font-size: 5rem;
-            color: var(--gray-200);
-            font-family: Georgia, serif;
-        }
-
-        .testimonial-text {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            position: relative;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .author-info h4 {
-            margin-bottom: 0.25rem;
-            color: var(--dark-color);
-        }
-
-        .author-info p {
-            font-size: 0.9rem;
-            color: var(--text-color);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gray-100);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.25rem;
-        }
-
-        .info-text h3 {
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-        }
-
-        .info-text p {
-            color: var(--text-color);
-        }
-
-        .contact-form {
-            background: var(--gray-100);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--gray-200);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-color);
-            color: var(--gray-100);
-            padding: 3rem 0 1.5rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-logo span {
-            font-weight: 700;
-            font-size: 1.25rem;
-        }
-
-        .footer-links h3,
-        .footer-contact h3 {
-            margin-bottom: 1rem;
-            color: white;
-            font-size: 1.25rem;
-        }
-
-        .footer-links ul {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .footer-links a {
-            color: var(--gray-100);
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-contact p {
-            margin-bottom: 0.75rem;
-            font-size: 0.9rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--gray-100);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.25rem;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-wrap: wrap;
-            }
-
-            nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
-            }
-
-            nav.active {
-                max-height: 300px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                padding: 1.5rem;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                order: -1;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .cta-buttons .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nupur — Makeup Artist & Beauty Studio</title>
+<meta name="description" content="Professional makeup artistry inspired by Ragli & Krishna Bhagava. Bridal, editorial, and everyday beauty.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--rose:#9a4d6a;
+--rose-deep:#7a3650;
+--gold:#c5a265;
+--gold-light:#f3e9cf;
+--ink:#2a1810;
+--ink-soft:#4a3a30;
+--ivory:#fdf8f3;
+--cream:#f7f0e8;
+--text:#4a3a30;
+--surface:#fff;
+--radius:24px;
+--shadow:0 30px 80px rgba(42,24,16,0.08);
+--shadow-hover:0 40px 100px rgba(42,24,16,0.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--ivory);line-height:1.65;letter-spacing:-0.01em}
+img{display:block;max-width:100%;height:auto;border-radius:16px}
+::selection{background:var(--gold-light);color:var(--ink)}
+
+.container{width:92%;max-width:1200px;margin:0 auto}
+
+/* Header */
+header{position:sticky;top:0;z-index:100;background:rgba(253,248,243,0.82);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid rgba(42,24,16,0.06)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0}
+.logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.7rem;color:var(--ink);letter-spacing:-0.03em;text-decoration:none}
+.logo span{color:var(--rose);font-style:italic;font-weight:400}
+nav ul{display:flex;gap:2.2rem;list-style:none}
+nav a{font-weight:500;font-size:0.88rem;color:var(--ink-soft);text-decoration:none;position:relative;padding-bottom:2px;transition:color .2s}
+nav a::after{content:'';position:absolute;bottom:-2px;left:50%;width:0;height:1.5px;background:var(--rose);border-radius:2px;transition:all .3s ease;transform:translateX(-50%)}
+nav a:hover{color:var(--ink)}
+nav a:hover::after{width:100%;left:0;transform:translateX(0)}
+
+/* Hero */
+.hero{position:relative;padding:7rem 0 6rem;overflow:hidden;background:var(--cream)}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(circle at 20% 30%, rgba(197,162,101,0.14) 0%, transparent 60%), radial-gradient(circle at 80% 70%, rgba(154,77,106,0.12) 0%, transparent 60%);pointer-events:none}
+.hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.hero-text h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem, 5vw, 4.2rem);line-height:1.05;color:var(--ink);letter-spacing:-0.035em;margin-bottom:1rem}
+.hero-text h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--rose);display:block;font-size:0.55em;letter-spacing:0.02em;margin-top:0.3rem}
+.hero-text p{font-size:1.15rem;color:var(--ink-soft);max-width:420px;margin-bottom:2rem;line-height:1.7}
+.hero-cta{display:flex;gap:0.8rem;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.75rem 1.8rem;border-radius:50px;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all .25s ease;border:2px solid transparent}
+.btn-primary{background:var(--ink);color:var(--ivory);border-color:var(--ink);box-shadow:0 8px 30px rgba(42,24,16,0.15)}
+.btn-primary:hover{background:var(--rose-deep);border-color:var(--rose-deep);transform:translateY(-3px);box-shadow:0 16px 40px rgba(42,24,16,0.22)}
+.btn-outline{background:transparent;color:var(--ink);border-color:rgba(42,24,16,0.2);box-shadow:none}
+.btn-outline:hover{border-color:var(--ink);background:rgba(42,24,16,0.03);transform:translateY(-3px)}
+.hero-visual{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transform:rotate(-0.5deg)}
+.hero-visual img{width:100%;height:auto;object-fit:cover;filter:saturate(0.85) contrast(1.05)}
+.hero-visual .label{position:absolute;bottom:1rem;left:1rem;background:rgba(42,24,16,0.72);backdrop-filter:blur(8px);color:#fff;padding:0.6rem 1.1rem;border-radius:12px;font-size:0.85rem;font-weight:500;letter-spacing:0.02em}
+
+/* Section titles */
+.section-header{text-align:center;max-width:640px;margin:0 auto 3.5rem}
+.section-header h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:var(--ink);letter-spacing:-0.03em;margin-bottom:0.6rem}
+.section-header p{color:var(--ink-soft);font-size:1.05rem}
+.section-header .line{width:60px;height:3px;background:linear-gradient(90deg,var(--gold),var(--rose));border-radius:3px;margin:1rem auto 0}
+
+/* About / Intro */
+.about{padding:6rem 0;background:var(--surface);position:relative}
+.about::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,var(--ivory),transparent);pointer-events:none}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.about-img img{width:100%;height:480px;object-fit:cover;filter:saturate(0.9)}
+.about-img .badge{position:absolute;top:1.2rem;right:1.2rem;background:var(--rose);color:#fff;padding:0.6rem 1rem;border-radius:50px;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;box-shadow:0 10px 30px rgba(154,77,106,0.3)}
+.about-text h3{font-family:'Playfair Display',serif;font-size:2rem;color:var(--ink);margin-bottom:1rem;letter-spacing:-0.02em}
+.about-text p{margin-bottom:1.25rem;color:var(--text);line-height:1.75}
+.inspiration{margin-top:1.5rem;padding:1.2rem 1.5rem;background:var(--cream);border-left:4px solid var(--gold);border-radius:0 12px 12px 0}
+.inspiration p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--ink-soft);margin-bottom:0.2rem}
+.inspiration small{font-family:'Inter',sans-serif;font-style:normal;font-size:0.8rem;color:var(--rose);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
+
+/* Services / Menu */
+.services{padding:7rem 0;background:var(--ivory)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}
+.menu-card{background:var(--surface);border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 20px rgba(42,24,16,0.06);transition:transform .3s ease,box-shadow .3s ease;border:1px solid rgba(42,24,16,0.05)}
+.menu-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover)}
+.menu-card img{width:100%;height:240px;object-fit:cover;filter:saturate(0.88)}
+.menu-body{padding:1.8rem 2rem 2rem}
+.menu-body h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--ink);margin-bottom:0.3rem}
+.menu-body .tag{display:inline-block;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:0.25rem 0.7rem;border-radius:50px;background:var(--gold-light);color:var(--rose-deep);margin-bottom:0.8rem}
+.menu-body p{color:var(--ink-soft);font-size:0.92rem;line-height:1.6;margin-bottom:1rem}
+.menu-body .price{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--ink);font-weight:600}
+
+/* Studio / Process */
+.process{padding:7rem 0;background:linear-gradient(180deg,var(--cream) 0%,var(--ivory) 100%)}
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem}
+.process-step{background:var(--surface);padding:2rem;border-radius:var(--radius);box-shadow:0 4px 20px rgba(42,24,16,0.05);position:relative;transition:transform .2s}
+.process-step:hover{transform:translateY(-4px)}
+.process-step .num{font-family:'Playfair Display',serif;font-size:3rem;color:var(--gold);line-height:1;opacity:0.6;margin-bottom:0.5rem}
+.process-step h4{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ink);margin-bottom:0.4rem}
+.process-step p{font-size:0.9rem;color:var(--ink-soft);line-height:1.6}
+
+/* Quote / Featured */
+.quote{padding:7rem 0;background:var(--ink);color:var(--ivory);position:relative;overflow:hidden}
+.quote .texture{position:absolute;inset:0;opacity:0.06;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.quote-inner{position:relative;z-index:2;max-width:800px;margin:0 auto;text-align:center}
+.quote-inner h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.25;margin-bottom:1rem;letter-spacing:-0.03em}
+.quote-inner .author{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--gold);margin-top:1.5rem}
+
+/* Gallery / Inspiration */
+.gallery{padding:7rem 0;background:var(--surface)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.gallery-grid img{width:100%;height:320px;object-fit:cover;border-radius:12px;filter:saturate(0.82);transition:filter .3s,transform .3s}
+.gallery-grid img:hover{filter:saturate(1);transform:scale(1.02)}
+.gallery-grid .wide{grid-column:span 2}
+
+/* Contact */
+.contact{padding:7rem 0;background:var(--cream)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-info h3{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--ink);margin-bottom:1rem}
+.contact-info .line{width:40px;height:3px;background:var(--gold);border-radius:3px;margin-bottom:1.5rem}
+.info-row{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start}
+.info-icon{width:48px;height:48px;border-radius:50%;background:var(--ivory);display:grid;place-items:center;font-size:1.2rem;box-shadow:0 4px 12px rgba(42,24,16,0.06);flex-shrink:0}
+.info-row h4{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink);margin-bottom:0.2rem}
+.info-row p{font-size:0.92rem;color:var(--ink-soft);line-height:1.5}
+.contact-form{background:var(--surface);padding:2.5rem;border-radius:var(--radius);box-shadow:0 10px 40px rgba(42,24,16,0.06);border:1px solid rgba(42,24,16,0.04)}
+.contact-form h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--ink);margin-bottom:1.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group label{display:block;font-weight:600;font-size:0.85rem;color:var(--ink);margin-bottom:0.35rem}
+.form-group input,.form-group textarea{width:100%;padding:0.75rem 1rem;border:1px solid rgba(42,24,16,0.12);border-radius:10px;font-family:inherit;font-size:0.95rem;background:var(--ivory);transition:border-color .2s,box-shadow .2s}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 3px rgba(154,77,106,0.12)}
+.form-group textarea{min-height:120px;resize:vertical}
+
+/* Footer */
+footer{background:var(--ink);color:#ddd;padding:4rem 0 2rem}
+.footer-inner{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:3rem}
+footer .logo{color:#fff;font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:0.5rem}
+footer .logo span{color:var(--gold)}
+footer p{font-size:0.9rem;color:#aaa;line-height:1.6}
+footer h4{font-family:'Playfair Display',serif;color:#fff;font-size:1.1rem;margin-bottom:1rem}
+footer ul{list-style:none}
+footer ul li{margin-bottom:0.4rem}
+footer a{color:#aaa;text-decoration:none;font-size:0.9rem;transition:color .2s}
+footer a:hover{color:var(--gold)}
+.socials{display:flex;gap:0.6rem;margin-top:1rem}
+.socials a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.08);display:grid;place-items:center;color:#fff;font-size:0.9rem;transition:background .2s}
+.socials a:hover{background:var(--rose);color:#fff}
+.footer-bottom{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;color:#777}
+
+/* Mobile */
+@media(max-width:1024px){
+.hero .container{grid-template-columns:1fr}
+.about-inner,.contact-inner{grid-template-columns:1fr}
+.footer-inner{grid-template-columns:1fr 1fr}
+.gallery-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+nav ul{gap:1rem}
+.header-inner{flex-wrap:wrap}
+.hero{padding:4rem 0 3rem}
+.menu-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.footer-inner{grid-template-columns:1fr}
+.footer-bottom{flex-direction:column;gap:0.5rem;text-align:center}
+}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <div class="logo-icon">N</div>
-                <span>Nupur</span>
-            </div>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
-                ☰
-            </button>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">Nupur <span>Makeup</span></a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#gallery">Inspiration</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home" aria-label="Hero">
+  <div class="hero-gradient" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-text">
+      <h1>Makeup Artistry <em>by Nupur</em></h1>
+      <p>Elegant bridal, editorial, and everyday beauty — inspired by the soft poetry of Ragli and the divine grace of Krishna Bhagava. Simple, luminous, unforgettable.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Book a Session</a>
+        <a href="#services" class="btn btn-outline">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-label="Makeup portrait">
+      <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200&auto=format&fit=crop" alt="Woman with elegant makeup and floral accents" loading="eager">
+      <div class="label">Bridal & Editorial</div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about" aria-label="About the artist">
+  <div class="container about-inner">
+    <div class="about-text">
+      <h3>Artist Profile</h3>
+      <p>I believe makeup is not a mask — it is a gentle celebration of the face you already have. My work draws from the delicate elegance of Ragli and the serene, devotional beauty of Krishna Bhagava: soft golds, blush roses, and luminous skin.</p>
+      <p>Every session begins with listening. Whether it is bridal, editorial, or a quiet daily glow, I design looks that feel like you — refined, simple, and lasting.</p>
+      <div class="inspiration">
+        <p>"Beauty begins when you decide to be yourself."</p>
+        <small>Inspired by Ragli & Krishna Bhagava</small>
+      </div>
+    </div>
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=800&auto=format&fit=crop" alt="Makeup artist at work" loading="lazy">
+      <div class="badge">12+ Years</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services" aria-label="Services">
+  <div class="container">
+    <div class="section-header">
+      <h2>Services</h2>
+      <p>Curated experiences for brides, editors, and everyday beauty.</p>
+      <div class="line" aria-hidden="true"></div>
+    </div>
+    <div class="menu-grid">
+      <article class="menu-card">
+        <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop" alt="Bridal makeup" loading="lazy">
+        <div class="menu-body">
+          <h3>Bridal Makeover</h3>
+          <span class="tag">Most Popular</span>
+          <p>Full face design with long-lasting products, skin prep, and a gentle trial session so you feel calm and beautiful on the day.</p>
+          <span class="price">From ₹8,500</span>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Professional Services You Can Trust</h1>
-            <p>We deliver exceptional results with personalized attention to detail</p>
-            <div>
-                <a href="#services" class="btn">Our Services</a>
-                <a href="#contact" class="btn btn-outline">Get in Touch</a>
-            </div>
+      </article>
+      <article class="menu-card">
+        <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f9?q=80&w=800&auto=format&fit=crop" alt="Editorial makeup" loading="lazy">
+        <div class="menu-body">
+          <h3>Editorial & Photoshoot</h3>
+          <span class="tag">Creative</span>
+          <p>Bold, artistic, and tailored to the light — whether for fashion campaigns, magazines, or personal portrait series.</p>
+          <span class="price">From ₹12,000</span>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Us</h2>
-                <p>Learn what makes Nupur different and why clients choose us</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>At Nupur, we're committed to providing high-quality services that exceed expectations. With years of experience and a passion for excellence, we help businesses and individuals achieve their goals through tailored solutions.</p>
-                    <p>Our approach combines expertise with personalized service to ensure every client receives the attention they deserve.</p>
-                    <div class="features">
-                        <div class="feature">
-                            <div class="feature-icon">⚡</div>
-                            <div class="feature-text">
-                                <h4>Fast & Reliable</h4>
-                                <p>We deliver results on time, every time.</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <div class="feature-icon">🎯</div>
-                            <div class="feature-text">
-                                <h4>Detail-Oriented</h4>
-                                <p>We pay attention to the smallest details.</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <div class="feature-icon">💬</div>
-                            <div class="feature-text">
-                                <h4>Clear Communication</h4>
-                                <p>We keep you informed throughout the process.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div style="width: 100%; height: 400px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; border-radius: var(--border-radius);">
-                        <span style="color: var(--text-color); font-style: italic;">Your Image Here</span>
-                    </div>
-                </div>
-            </div>
+      </article>
+      <article class="menu-card">
+        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aaae2?q=80&w=800&auto=format&fit=crop" alt="Everyday beauty" loading="lazy">
+        <div class="menu-body">
+          <h3>Everyday Glow</h3>
+          <span class="tag">Quick</span>
+          <p>A luminous, soft-focus look that lasts through the day with minimal touch-ups — natural, polished, and comfortable.</p>
+          <span class="price">From ₹3,500</span>
         </div>
-    </section>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-                <p>Discover how we can help you succeed</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image">Service 1</div>
-                    <div class="service-content">
-                        <h3>Service Name</h3>
-                        <p>Brief description of what this service entails and how it benefits clients.</p>
-                        <span class="service-price">Starting at $99</span>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-image">Service 2</div>
-                    <div class="service-content">
-                        <h3>Service Name</h3>
-                        <p>Brief description of what this service entails and how it benefits clients.</p>
-                        <span class="service-price">Starting at $149</span>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-image">Service 3</div>
-                    <div class="service-content">
-                        <h3>Service Name</h3>
-                        <p>Brief description of what this service entails and how it benefits clients.</p>
-                        <span class="service-price">Starting at $199</span>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-image">Service 4</div>
-                    <div class="service-content">
-                        <h3>Service Name</h3>
-                        <p>Brief description of what this service entails and how it benefits clients.</p>
-                        <span class="service-price">Starting at $79</span>
-                    </div>
-                </div>
-            </div>
+<section class="process" id="process" aria-label="How it works">
+  <div class="container">
+    <div class="section-header">
+      <h2>How It Works</h2>
+      <p>Simple steps from first message to finished look.</p>
+      <div class="line" aria-hidden="true"></div>
+    </div>
+    <div class="process-grid">
+      <article class="process-step">
+        <div class="num">01</div>
+        <h4>Consult</h4>
+        <p>Share your vision — outfit, vibe, and any references. We talk mood, color, and skin needs.</p>
+      </article>
+      <article class="process-step">
+        <div class="num">02</div>
+        <h4>Trial</h4>
+        <p>For bridal and editorial, a trial session helps us refine the final look without pressure.</p>
+      </article>
+      <article class="process-step">
+        <div class="num">03</div>
+        <h4>Session</h4>
+        <p>Relax in a calm setting. I work slowly, with clean products and gentle touch.</p>
+      </article>
+      <article class="process-step">
+        <div class="num">04</div>
+        <h4>Reveal</h4>
+        <p>See yourself in soft light. Touch-ups and aftercare advice are included.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="quote" aria-label="Artist quote">
+  <div class="texture" aria-hidden="true"></div>
+  <div class="container quote-inner">
+    <h2>“The best makeup does not hide — it reveals the beauty already there.</h2>
+    <div class="author">— Nupur, inspired by Ragli & Krishna Bhagava</div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery" aria-label="Inspiration gallery">
+  <div class="container">
+    <div class="section-header">
+      <h2>Inspiration</h2>
+      <p>Visual notes from recent work and mood boards.</p>
+      <div class="line" aria-hidden="true"></div>
+    </div>
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=800&auto=format&fit=crop" alt="Beauty portrait with soft gold accents" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800&auto=format&fit=crop" alt="Editorial portrait" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=800&auto=format&fit=crop" alt="Floral beauty" class="wide" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-label="Contact">
+  <div class="container contact-inner">
+    <div class="contact-info">
+      <h3>Book a Session</h3>
+      <div class="line" aria-hidden="true"></div>
+      <div class="info-row">
+        <div class="info-icon">✉</div>
+        <div>
+          <h4>Email</h4>
+          <p>hello@nupurmakeup.in</p>
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat">
-                    <span class="stat-number">500+</span>
-                    <span class="stat-label">Clients Served</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">10+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">98%</span>
-                    <span class="stat-label">Satisfaction Rate</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">24/7</span>
-                    <span class="stat-label">Support Available</span>
-                </div>
-            </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">☎</div>
+        <div>
+          <h4>Phone</h4>
+          <p>+91 98765 43210</p>
         </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to Get Started?</h2>
-            <p>Contact us today to discuss how we can help you achieve your goals</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn">Schedule Consultation</a>
-                <a href="#services" class="btn btn-outline">View Services</a>
-            </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">◈</div>
+        <div>
+          <h4>Studio</h4>
+          <p>Raghavendra Road, Bangalore<br>By appointment only</p>
         </div>
-    </section>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="event.preventDefault();this.innerHTML='<h3>Message Sent</h3><p>Thank you — I will reply within 24 hours.</p>';" aria-label="Contact form">
+      <h3>Send a Message</h3>
+      <div class="form-row">
+        <div class="form-group"><label for="c-name">Name</label><input id="c-name" name="name" placeholder="Your name" required></div>
+        <div class="form-group"><label for="c-email">Email</label><input id="c-email" name="email" type="email" placeholder="you@email.com" required></div>
+      </div>
+      <div class="form-group"><label for="c-sub">Interest</label><input id="c-sub" name="subject" placeholder="Bridal / Editorial / Everyday" required></div>
+      <div class="form-group"><label for="c-msg">Message</label><textarea id="c-msg" name="message" placeholder="Tell me about your event, skin, and vibe..." required></textarea></div>
+      <button class="btn btn-primary" type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Clients Say</h2>
-                <p>Hear from those who've worked with us</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Nupur provided exceptional service that exceeded our expectations. Professional, timely, and outstanding results!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-img" style="background: var(--gray-100); display: flex; align-items: center; justify-content: center;">AB</div>
-                        <div class="author-info">
-                            <h4>Alex Johnson</h4>
-                            <p>CEO, TechCorp</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The attention to detail and personalized approach made all the difference. Highly recommend Nupur for any professional services needs."</p>
-                    <div class="testimonial-author">
-                        <div class="author-img" style="background: var(--gray-100); display: flex; align-items: center; justify-content: center;">SM</div>
-                        <div class="author-info">
-                            <h4>Sarah Martinez</h4>
-                            <p>Marketing Director</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"From start to finish, the experience was seamless. Nupur truly understands client needs and delivers accordingly."</p>
-                    <div class="testimonial-author">
-                        <div class="author-img" style="background: var(--gray-100); display: flex; align-items: center; justify-content: center;">JK</div>
-                        <div class="author-info">
-                            <h4>James Kelly</h4>
-                            <p>Small Business Owner</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="logo">Nupur <span>Makeup</span></div>
+      <p>A makeup studio inspired by gentle elegance, devotional beauty, and the poetry of Ragli and Krishna Bhagava.</p>
+    </div>
+    <div>
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#gallery">Inspiration</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Bridal</a></li>
+        <li><a href="#services">Editorial</a></li>
+        <li><a href="#services">Everyday Glow</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Social</h4>
+      <div class="socials" aria-label="Social links">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Pinterest">Pi</a>
+        <a href="#" aria-label="WhatsApp">WA</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Nupur Makeup. All rights reserved.</span>
+    <span>Designed with simplicity and grace.</span>
+  </div>
+</footer>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Get in Touch</h2>
-                <p>We'd love to hear from you</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="info-item">
-                        <div class="info-icon">📍</div>
-                        <div class="info-text">
-                            <h3>Location</h3>
-                            <p>123 Business Street<br>City, State 12345</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">📞</div>
-                        <div class="info-text">
-                            <h3>Phone</h3>
-                            <p>(555) 123-4567</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">📧</div>
-                        <div class="info-text">
-                            <h3>Email</h3>
-                            <p>info@nupur.com</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">🕒</div>
-                        <div class="info-text">
-                            <h3>Hours</h3>
-                            <p>Monday-Friday: 9AM-6PM<br>Saturday: 10AM-4PM</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Your full name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="your@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required placeholder="How can we help?">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Your message here..."></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-logo">
-                <div class="logo-icon">N</div>
-                <div>
-                    <span>Nupur</span>
-                    <p>Professional Services</p>
-                </div>
-            </div>
-
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-contact">
-                <h3>Contact Info</h3>
-                <p><strong>Phone:</strong> (555) 123-4567</p>
-                <p><strong>Email:</strong> info@nupur.com</p>
-                <p><strong>Address:</strong> 123 Business Street, City, State 12345</p>
-            </div>
-
-            <div class="social-links">
-                <a href="#" aria-label="Facebook">f</a>
-                <a href="#" aria-label="Twitter">t</a>
-                <a href="#" aria-label="Instagram">📷</a>
-                <a href="#" aria-label="LinkedIn">in</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Nupur. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('nav').classList.toggle('active');
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Active nav link on scroll
-        window.addEventListener('scroll', function() {
-            let scrollPos = window.pageYOffset;
-            document.querySelectorAll('nav a').forEach(link => {
-                let section = document.querySelector(link.getAttribute('href'));
-                if (section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
-                    document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
